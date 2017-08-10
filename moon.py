@@ -1,5 +1,4 @@
-# Functions to calculate the distance to the moon
-# give credit to David
+# Function to calculate the distance to the moon
 
 import requests
 import pandas as pd
@@ -30,6 +29,7 @@ def moon_distance(loc, t2, t3):
     rm = 1738.1
 
     dm = (2 * rm - su) * ds / (2 * (rs - rm)) + re
+    #print('Distance estimate: {:.7} km (Actual: {:.7}). Ratio: {:.2}. Difference: {:.7}'.format(dm, moon.distance, moon.distance / (dm * u.km), dm * u.km - moon.distance))
 
     # moon.distance is from surface, not center
     return dm, moon.distance.to(u.km).value + re
@@ -122,7 +122,7 @@ def get_path():
     url = 'https://eclipse.gsfc.nasa.gov/SEpath/SEpath2001/SE2017Aug21Tpath.html'
     r = requests.get(url)
     html = r.content
-    r.close()
+    #r.close()
 
     # Extract the data
     soup = BeautifulSoup(html, 'html.parser')
@@ -153,9 +153,8 @@ def get_path():
 
         parse_data.append([utc, nlat, nlon, slat, slon, clat, clon, ms_ratio, sun_alt, sun_az, width, dur])
 
-        df = pd.DataFrame(parse_data,
-                          columns=['time', 'nlat', 'nlon', 'slat', 'slon', 'clat', 'clon', 'msratio', 'alt', 'az', 'width',
-                                   'dur'])
+        df = pd.DataFrame(parse_data,columns=['time', 'nlat', 'nlon', 'slat', 'slon', 'clat', 'clon', 'msratio', 'alt', 'az', 'width', 'dur'])
+
     return df
 
 

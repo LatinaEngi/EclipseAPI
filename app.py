@@ -8,18 +8,6 @@ from moon import moon_distance, get_umbra, estimate_umbra
 
 app = Flask(__name__)
 
-'''
-@app.route('/', methods=['GET'])
-def say_hello():
-    return jsonify({'message' : 'Hello! Welcome to the 2017 Eclipse API'})
-
-@app.route('/results', methods=['POST'])
-def do_calculations():
-    if not request.json or not 'name' in request.json:
-        abort(400)
-    name = request.json['name']
-    return jsonify({'message': 'Hello ' + name}), 200
-'''
 @app.route('/', methods=['GET'])
 def say_hello():
     return jsonify(message='Hello! Welcome to the 2017 Eclipse App.')
@@ -50,11 +38,9 @@ def do_calculations():
     loc = EarthLocation.of_address(app_vars['location'])
     t2 = Time('2017-08-21 ' + app_vars['c2time'])
     t3 = Time('2017-08-21 ' + app_vars['c3time'])
+
     dm, reald = moon_distance(loc, t2, t3)
 
-    return jsonify(app_vars)
-
-'''
     sun = get_sun(t2)
     sun_altaz = sun.transform_to(AltAz(obstime=t2, location=loc))
 
@@ -71,7 +57,7 @@ def do_calculations():
     app_vars['percent_diff'] = '{:.2}'.format((dm - reald) / reald * 100.)
 
     return jsonify(app_vars)
-'''
+
 @app.errorhandler(404)
 def not_found(error):
     return make_response(jsonify({'error': 'Not found'}), 404)
