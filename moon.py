@@ -50,9 +50,9 @@ def estimate_umbra(loc, t2, t3, verbose=False):
 
     # Extra corrections for projection/location from central line
     # Need to check if this is the right approach
-    df = get_path()
-    df['sep'] = ang_sep(loc, df['clon'], df['clat']) * 2 * np.pi * R_earth.to(u.km).value / 360.
-    ind = df[df['sep'] == min(df['sep'])].index[0]
+    # df = get_path()
+    # df['sep'] = ang_sep(loc, df['clon'], df['clat']) * 2 * np.pi * R_earth.to(u.km).value / 360.
+    # ind = df[df['sep'] == min(df['sep'])].index[0]
 
     # Replace with finer version
     x2 = 41.
@@ -116,7 +116,7 @@ def convert_to_decimal(e1, e2):
 
     return (float(e1) + float(e2[:-1]) / 60) * sign
 
-
+'''
 def get_path():
     # Get the path of the eclipse from the NASA page
     url = 'https://eclipse.gsfc.nasa.gov/SEpath/SEpath2001/SE2017Aug21Tpath.html'
@@ -156,7 +156,7 @@ def get_path():
         df = pd.DataFrame(parse_data,columns=['time', 'nlat', 'nlon', 'slat', 'slon', 'clat', 'clon', 'msratio', 'alt', 'az', 'width', 'dur'])
 
     return df
-
+'''
 
 def ang_sep(loc, ra1, dec1):
     # Using Vicenty Formula (http://en.wikipedia.org/wiki/Great-circle_distance)
