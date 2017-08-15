@@ -157,7 +157,7 @@ def get_path():
 
         parse_data.append([utc, nlat, nlon, slat, slon, clat, clon, ms_ratio, sun_alt, sun_az, width, dur])
 
-        df = pd.DataFrame(parse_data,columns=['time', 'nlat', 'nlon', 'slat', 'slon', 'clat', 'clon', 'msratio', 'alt', 'az', 'width', 'dur'])
+    df = pd.DataFrame(parse_data,columns=['time', 'nlat', 'nlon', 'slat', 'slon', 'clat', 'clon', 'msratio', 'alt', 'az', 'width', 'dur'])
 
     return df
 
