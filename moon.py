@@ -122,9 +122,13 @@ def get_path():
     #r = requests.get(url)
     #html = r.content
     #r.close()
-
-    with open('SE2017Aug21Tpath.html') as r:
-        html = r.read()
+    
+    r = open('SE2017Aug21Tpath.html', 'r', encoding='latin-1')
+    html = r.read()
+    r.close()
+    
+    #with open('SE2017Aug21Tpath.html') as r:
+    #    html = r.read()
 
     # Extract the data
     soup = BeautifulSoup(html, 'html.parser')
