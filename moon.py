@@ -118,6 +118,7 @@ def convert_to_decimal(e1, e2):
 
 def get_path():
     # Get the path of the eclipse from the NASA page
+    
     # url = 'https://eclipse.gsfc.nasa.gov/SEpath/SEpath2001/SE2017Aug21Tpath.html'
     #r = requests.get(url)
     #html = r.content
@@ -126,9 +127,6 @@ def get_path():
     r = open('SE2017Aug21Tpath.html', 'r', encoding='latin-1')
     html = r.read()
     r.close()
-    
-    #with open('SE2017Aug21Tpath.html') as r:
-    #    html = r.read()
 
     # Extract the data
     soup = BeautifulSoup(html, 'html.parser')
