@@ -124,13 +124,19 @@ def get_path():
     #html = r.content
     #r.close()
     
-    r = open('SE2017Aug21Tpath.html', 'r', encoding='latin-1')
-    html = r.read()
-    r.close()
+    # Extract the data
+    with open("SE2017Aug21Tpath.html") as fp:
+        soup = BeautifulSoup(fp)
+        
+    raw_data = soup.find('pre').get_text()
+    
+    #r = open('SE2017Aug21Tpath.html', 'r', encoding='windows-1252')
+    #html = r.read()
+    #r.close()
 
     # Extract the data
-    soup = BeautifulSoup(html, 'html.parser')
-    raw_data = soup.find('pre').get_text()
+    #soup = BeautifulSoup(html, 'html.parser')
+    #raw_data = soup.find('pre').get_text()
 
     parse_data = list()
     for i, raw_line in enumerate(raw_data.split('\r')):
