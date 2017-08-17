@@ -133,7 +133,7 @@ def get_path():
     raw_data = soup.find('pre').get_text()
 
     parse_data = list()
-    for i, raw_line in enumerate(raw_data.split('\r')):
+    for i, raw_line in enumerate(raw_data.split('\n')):
         line = raw_line.strip()
         if line == '' or len(line) == 0 or line.startswith('Limits') or i < 7:
             continue
